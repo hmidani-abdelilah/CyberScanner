@@ -1,4 +1,10 @@
-import requests
+import pip
+
+try:
+	import requests
+except ImportError:
+	pip.main(["install","requests"])
+
 from threading import Thread
 import random
 import os
@@ -7,6 +13,20 @@ import threading, time, random
 from threading import *
 from queue import Queue
 import sys, re, time
+
+
+
+
+#######Setup_Command
+try:
+	os.mkdir("Result")
+	os.chdir("Result")
+	os.mkdir("Raports")
+	os.chdir("../")
+except FileExistsError:
+	pass
+
+
 
 
 
@@ -182,7 +202,7 @@ class wp_install():
 		self.screenlock_wp=Semaphore(value=1)
 		self.vulnerable=0
 		self.bad=0
-		self.exploit_path="/wordpress/wp-admin/install.php"
+		self.exploit_path="/wp-admin/install.php"
 		self.job_wp=Queue()
 		self.read_path=input("Enter Weblist Path: ")
 		self.threads=int(input("Enter Num Threads: "))
@@ -213,6 +233,8 @@ class wp_install():
 				print("\033[1;33m[\033[1;36mFound-Vuln\033[1;33m]  \033[1;32m"+url)
 				self.screenlock_wp.release()
 				self.vulnerable=self.vulnerable+1
+				self.results=open("Result/wp_install_vunl.txt","w")
+				self.results.write(url+"\n")
 			else:
 				self.screenlock_wp.acquire()
 				print("\033[1;33m[\033[1;36mBad\033[1;33m]  \033[1;31m "+url)
@@ -263,6 +285,8 @@ class kc_finder():
 				print("\033[1;33m[\033[1;36mFound-Vuln\033[1;33m]  \033[1;32m"+url)
 				self.screenlock_kc.release()
 				self.vulnerable=self.vulnerable+1
+				self.results=open("Result/Kc_Finder_Vunl.txt", "w")
+				self.results.write(url+"\n")
 			else:
 				self.screenlock_kc.acquire()
 				print("\033[1;33m[\033[1;36mBad\033[1;33m]  \033[1;31m "+url)
@@ -277,7 +301,7 @@ class kc_finder():
 	def fuck_you_kc_finder(self,q):
 		while not q.empty():
 			i=q.get()
-			if i.startswith("http"):
+			if i.startswith("http" or "https"):
 				self.url= i+self.exploit_path
 				self.kc_finder_exploit(self.url)
 			else:
@@ -378,6 +402,7 @@ class lavarel_vunl():
 		except KeyboardInterrupt:
 			print("Good Bey")
 			exit()
+
 		except:
 			pass
 	
@@ -662,9 +687,9 @@ class main(Thread):
 	def __init__(self):
 		os.system("clear")
 		self.logo()
-		print("{}1{}-{}SQL Injection Brute Forcing".format("\033[1;32m","\033[1;33m","\033[1;36m"))
+		print("{}1{}-{}SQL Injection Brute Forcing [Soon]".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}2{}-{}Admin Panel Brute Forcing".format("\033[1;32m","\033[1;33m","\033[1;36m"))
-		print("{}3{}-{}SQL Injection Scan URL".format("\033[1;32m","\033[1;33m","\033[1;36m"))
+		print("{}3{}-{}SQL Injection Scan URL[Soon]".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}4{}-{}Facebook Group Hack".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}5{}-{}IP-Tracker".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}6{}-{}Wp-Install Bruter".format("\033[1;32m","\033[1;33m","\033[1;36m"))
