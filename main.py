@@ -650,7 +650,7 @@ class main(Thread):
 		print("{}7{}-{}Lavarel SMTP Dumper And Shell Uploader".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}8{}-{}kc Finder".format("\033[1;32m","\033[1;33m","\033[1;36m"))
 		print("{}9{}-{}Random Cam Hacking".format("\033[1;32m","\033[1;33m","\033[1;36m"))
-		choise=int(input("\033[1;33m[\033[1;34m*\033[1;33m]\033[1;33mSelect Number 1 to 5: \033[1;32m"))
+		choise=int(input("\033[1;33m[\033[1;34m*\033[1;33m]\033[1;33mSelect Number 1 to 9: \033[1;32m"))
 
 		if choise == 1:
 			#sqli_brute_and_scan().brute_sites_sqli()
